@@ -1,11 +1,12 @@
-import io
-
 from PIL import Image, ImageDraw, ImageFont
 
-img_ins = Image.open('./heart_empty.jpg', formats=['jpeg'])
+from sticker_generator.settings import BASE_DIR
+
+img_ins = Image.open(BASE_DIR.joinpath('static/image/heart_empty.jpg'), formats=['jpeg'])
 
 fontSize = 45
-font = ImageFont.truetype('../font/SourceHanSans/OTF/SimplifiedChinese/SourceHanSansSC-Bold.otf', fontSize)
+font = ImageFont.truetype(
+    BASE_DIR.joinpath('static/font/SourceHanSans/OTF/SimplifiedChinese/SourceHanSansSC-Bold.otf'), fontSize)
 
 
 def generate(text: str, angle: float, io_stream):
