@@ -1,0 +1,11 @@
+services:
+  server:
+    build: .
+    container_name: sticker_generator_server_dev
+    ports:
+      - "8000:8000"
+    networks:
+      - sticker_generator
+
+networks:
+  sticker_generator:
