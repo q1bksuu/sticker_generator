@@ -8,13 +8,9 @@ from heart_name_heart.forms import GenerateForm
 
 def generate_api(request):
     req = GenerateForm()
-    req.name = request.GET.get('name')
-    req.angle = request.GET.get('angle', 5)
-    req.download = request.GET.get('download', False) == 'true'
-
-    name = req.name
-    angle = req.angle
-    download = req.download
+    name = req.name.clean(request.GET.get('name'))
+    angle = req.angle.clean(request.GET.get('angle', 5))
+    download = req.download.clean(request.GET.get('download', False))
 
     resp = HttpResponse()
     generate(name, angle, resp)
